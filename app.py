@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, send_file
-from datetime import date
+from flask import Flask, render_template, request, send_file, jsonify
+from datetime import date, datetime
 import json
 from web3 import Web3, HTTPProvider
 import os
@@ -9,6 +9,7 @@ import base64
 import io
 import logging
 import traceback
+import secrets as _secrets
 from urllib.parse import quote
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from werkzeug.utils import secure_filename
@@ -17,6 +18,15 @@ from mailer import send_email_with_attachment, build_share_email, build_prescrip
 # ── KAC-UR import ──────────────────────────────────────────────────────────
 from kac_crypto import KACUREngine
 kac_engine = KACUREngine(n_classes=10)
+# ──────────────────────────────────────────────────────────────────────────
+
+# ── CLS import ─────────────────────────────────────────────────────────────
+from cls_crypto import CLSEngine
+cls_engine = CLSEngine()
+
+# In-memory nonce store for CLS challenge-response auth
+# { username: nonce_string }
+_cls_challenges: dict = {}
 # ──────────────────────────────────────────────────────────────────────────
 
 app = Flask(__name__)
@@ -142,7 +152,12 @@ def readDetails(contract_type):
             details = contract.functions.getRevocation().call()
         except Exception:
             details = ""
-    print(details)    
+    if contract_type == 'audit':
+        try:
+            details = contract.functions.getAuditLog().call()
+        except Exception:
+            details = ""
+    print(details)
 
 def saveDataBlockChain(currentData, contract_type):
     global details
@@ -182,6 +197,14 @@ def saveDataBlockChain(currentData, contract_type):
             msg = contract.functions.setRevocation(details).transact()
             tx_receipt = web3.eth.waitForTransactionReceipt(msg)
         except Exception:
+            tx_receipt = {}
+    if contract_type == 'audit':
+        details += encrypted_line + "\n"
+        try:
+            msg = contract.functions.setAuditLog(details).transact()
+            tx_receipt = web3.eth.waitForTransactionReceipt(msg)
+        except Exception:
+            # Contract not yet redeployed with audit support — silent fail
             tx_receipt = {}
     tx_receipt_data = pickle.dumps(tx_receipt)
     client_socket.send(tx_receipt_data)
@@ -227,6 +250,25 @@ def _sync_revocations_from_blockchain():
                 kac_engine._global_rl.add(doctor_id)
     except Exception as e:
         print(f"[KAC] Warning: could not sync revocations from blockchain: {e}")
+
+# ── CLS: Audit-proof access logging ──────────────────────────────────────────
+def log_access(patient_id: str, doctor_id: str, file_class: int = 0):
+    """
+    Record a non-repudiable access event on the blockchain.
+    CLS-signs the log entry with the doctor's session key so the doctor
+    cannot later deny having accessed the file.
+    Wrapped in try/except — never crashes the app.
+    """
+    try:
+        timestamp  = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        log_entry  = f"access_log#{patient_id}#{doctor_id}#{file_class}#{timestamp}"
+        sig        = cls_engine.sign(log_entry, doctor_id)
+        sig_str    = f"{sig['pseudo_id']}:{sig['sigma']}" if sig else "unsigned"
+        full_record = f"{log_entry}#{sig_str}"
+        saveDataBlockChain(full_record, "audit")
+    except Exception as e:
+        print(f"[CLS] log_access warning: {e}")
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # EXISTING ROUTES (unchanged logic, revocation guard added where relevant)
@@ -511,7 +553,20 @@ def PatientSignupAction():
         if record == 'none':
             data = "signup#"+user+"#"+password+"#"+contact+"#"+email+"#"+address+"\n"
             saveDataBlockChain(data,"patient")
-            context= 'Signup process completd and record saved in Blockchain'
+            # ── CLS: Generate pseudo-identity and key pair for this patient ──
+            try:
+                key_data  = cls_engine.user_key_gen(user)
+                pseudo_id = key_data["pseudo_id"]
+                pk_rec    = cls_engine.get_public_key_record(user)
+                # Store CLS registration record on the Historical Verification Chain
+                cls_record = (f"cls_reg#{user}#{pseudo_id}#"
+                              f"{pk_rec['X_hex'][:16]}...#{str(date.today())}")
+                saveDataBlockChain(cls_record, "patient")
+                print(f"[CLS] Patient '{user}' registered with pseudo-ID: {pseudo_id}")
+            except Exception as e:
+                print(f"[CLS] Warning: key gen failed for '{user}': {e}")
+            # ────────────────────────────────────────────────────────────────
+            context= 'Signup process completed and record saved in Blockchain'
             return render_template('PatientSignup.html', data=context)
         else:
             context= user+' Username already exists'
@@ -541,6 +596,13 @@ def PatientLoginAction():
             # ── KAC-UR: ensure patient setup on login ──────────────────
             kac_engine.owner_setup(user)
             _sync_revocations_from_blockchain()
+            # ── CLS: ensure session keys are ready ─────────────────────
+            try:
+                cls_engine.get_or_create_keys(user)
+                print(f"[CLS] Patient '{user}' session keys ready. "
+                      f"pseudo-ID: {cls_engine.get_pseudo_id(user)}")
+            except Exception as e:
+                print(f"[CLS] Warning: key init failed for '{user}': {e}")
             # ──────────────────────────────────────────────────────────
             context= "Welcome "+user
             return render_template('PatientScreen.html', data=context)
@@ -571,6 +633,18 @@ def AddDoctorAction():
         if record == 'none':
             data = "hospital#"+user+"#"+password+"#"+contact+"#"+email+"#"+address+"#"+qualification+"#"+experience+"#"+hospital+"\n"
             saveDataBlockChain(data,"hospital")
+            # ── CLS: Generate pseudo-identity and key pair for this doctor ──
+            try:
+                key_data  = cls_engine.user_key_gen(user)
+                pseudo_id = key_data["pseudo_id"]
+                pk_rec    = cls_engine.get_public_key_record(user)
+                cls_record = (f"cls_reg#{user}#{pseudo_id}#"
+                              f"{pk_rec['X_hex'][:16]}...#{str(date.today())}")
+                saveDataBlockChain(cls_record, "hospital")
+                print(f"[CLS] Doctor '{user}' registered with pseudo-ID: {pseudo_id}")
+            except Exception as e:
+                print(f"[CLS] Warning: key gen failed for doctor '{user}': {e}")
+            # ────────────────────────────────────────────────────────────────
             context= 'New Doctor & Hospital details saved in Blockchain'
             return render_template('AddDoctor.html', data=context)
         else:
@@ -599,7 +673,14 @@ def DoctorLoginAction():
             file.close()
             # ── KAC-UR: sync revocations so doctor login reflects current state ──
             _sync_revocations_from_blockchain()
-            # ─────────────────────────────────────────────────────────────────────
+            # ── CLS: ensure session keys are ready ─────────────────────────────
+            try:
+                cls_engine.get_or_create_keys(user)
+                print(f"[CLS] Doctor '{user}' session keys ready. "
+                      f"pseudo-ID: {cls_engine.get_pseudo_id(user)}")
+            except Exception as e:
+                print(f"[CLS] Warning: key init failed for doctor '{user}': {e}")
+            # ────────────────────────────────────────────────────────────────────
             context= "Welcome "+user
             return render_template('DoctorScreen.html', data=context)
         else:
@@ -863,6 +944,17 @@ def view_report():
     inline_types = {'application/pdf', 'image/png', 'image/jpeg',
                     'image/gif', 'image/bmp', 'image/webp', 'text/plain'}
     as_attachment = mime not in inline_types
+
+    # ── CLS: Non-repudiable audit log entry ─────────────────────────────
+    # Logs who accessed this file on the Historical Verification Chain.
+    try:
+        accessor   = userid if 'userid' in globals() and userid else "unknown"
+        data_class = kac_engine.symptoms_to_class(filename) if patient else 0
+        log_access(patient or "unknown", accessor, data_class)
+    except Exception:
+        pass
+    # ────────────────────────────────────────────────────────────────────
+
     return send_file(
         io.BytesIO(data),
         as_attachment=as_attachment,
@@ -880,6 +972,155 @@ def download_report():
     return redirect(url_for('view_report', name=name, patient=patient))
 
 
-      
+# ─────────────────────────────────────────────────────────────────────────────
+# CLS API ENDPOINTS  (Section 6.3 of implementation plan)
+# ─────────────────────────────────────────────────────────────────────────────
+
+@app.route('/api/challenge/<username>', methods=['GET'])
+def api_challenge(username):
+    """
+    Step 1 of CLS challenge-response login.
+    Returns a one-time nonce that the client must sign with their CLS key.
+    The nonce expires after use (single-use).
+
+    GET /api/challenge/<username>
+    Response: { "nonce": "<hex-string>", "username": "<username>" }
+    """
+    nonce = _secrets.token_hex(32)
+    _cls_challenges[username] = nonce
+    return jsonify({"nonce": nonce, "username": username})
+
+
+@app.route('/api/cls_login', methods=['POST'])
+def api_cls_login():
+    """
+    Step 2 of CLS challenge-response login.
+    The client signs the nonce returned by /api/challenge with their CLS key.
+    The server verifies the signature — no password is ever transmitted.
+
+    POST /api/cls_login
+    Body (JSON): { "username": "...", "signature": { "T_hex": "...", "sigma": ..., "pseudo_id": "..." } }
+    Response:    { "status": "ok"|"fail", "pseudo_id": "...", "message": "..." }
+    """
+    body      = request.get_json(force=True, silent=True) or {}
+    username  = body.get("username", "").strip()
+    signature = body.get("signature", {})
+
+    if not username or not signature:
+        return jsonify({"status": "fail", "message": "username and signature required"}), 400
+
+    nonce = _cls_challenges.pop(username, None)
+    if nonce is None:
+        return jsonify({"status": "fail",
+                        "message": "No pending challenge. Call /api/challenge first."}), 400
+
+    # Ensure CLS keys exist for this user
+    if not cls_engine.is_registered(username):
+        cls_engine.get_or_create_keys(username)
+
+    valid = cls_engine.verify(nonce, signature, username)
+    if valid:
+        pseudo_id = cls_engine.get_pseudo_id(username)
+        return jsonify({
+            "status":    "ok",
+            "pseudo_id": pseudo_id,
+            "message":   f"CLS authentication successful for pseudo-ID {pseudo_id}"
+        })
+    else:
+        return jsonify({"status": "fail", "message": "Invalid CLS signature"}), 401
+
+
+@app.route('/api/batch_verify_telemetry', methods=['POST'])
+def api_batch_verify_telemetry():
+    """
+    Batch-verify multiple CLS-signed health telemetry records in one call.
+    Demonstrates O(1) batch verification latency regardless of record count
+    (Wang et al. BCCA, Section 6.3 of implementation plan).
+
+    POST /api/batch_verify_telemetry
+    Body (JSON):
+    {
+      "records": [
+        {
+          "identity": "doctor_username",
+          "message":  "patient_id:file_class:timestamp:value",
+          "signature": { "T_hex": "...", "sigma": ..., "pseudo_id": "..." }
+        }, ...
+      ]
+    }
+    Response:
+    {
+      "status":  "ok"|"fail",
+      "all_valid": true|false,
+      "passed":  <int>,
+      "failed":  <int>,
+      "count":   <int>,
+      "method":  "batch"
+    }
+    """
+    body    = request.get_json(force=True, silent=True) or {}
+    records = body.get("records", [])
+
+    if not records:
+        return jsonify({"status": "fail", "message": "No records provided"}), 400
+
+    # Ensure CLS keys exist for every identity referenced
+    for rec in records:
+        ident = rec.get("identity", "")
+        if ident and not cls_engine.is_registered(ident):
+            cls_engine.get_or_create_keys(ident)
+
+    all_valid, passed, failed = cls_engine.batch_verify(records)
+
+    return jsonify({
+        "status":    "ok",
+        "all_valid": all_valid,
+        "passed":    passed,
+        "failed":    failed,
+        "count":     len(records),
+        "method":    "batch"
+    })
+
+
+@app.route('/ViewAccessLog', methods=['GET'])
+def ViewAccessLog():
+    """
+    Patient/Admin view of the immutable blockchain access audit log.
+    Shows who accessed which patient's files and when (with pseudo-ID).
+    """
+    rows   = get_rows("audit")
+    output = ""
+    filter_patient = request.args.get('patient', '')
+
+    for row in rows:
+        if not row.strip():
+            continue
+        arr = row.split("#")
+        # Format: access_log#patient#doctor#class#timestamp#pseudo_id:sigma
+        if arr[0] == "access_log" and len(arr) >= 5:
+            patient_id  = arr[1]
+            doctor_id   = arr[2]
+            data_class  = arr[3]
+            timestamp   = arr[4]
+            sig_info    = arr[5] if len(arr) > 5 else "—"
+            pseudo_part = sig_info.split(":")[0] if ":" in sig_info else sig_info
+
+            if filter_patient and patient_id != filter_patient:
+                continue
+
+            output += (
+                f'<tr>'
+                f'<td>{patient_id}</td>'
+                f'<td>{doctor_id}</td>'
+                f'<td>{data_class}</td>'
+                f'<td>{timestamp}</td>'
+                f'<td><code style="font-size:0.75rem">{pseudo_part[:16]}…</code></td>'
+                f'</tr>'
+            )
+
+    return render_template('ViewAccessLog.html', data=output,
+                           filter_patient=filter_patient)
+
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
