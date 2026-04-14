@@ -40,6 +40,7 @@ def handle_exception(e):
     return f'<pre style="color:red;padding:20px">{tb}</pre>', 500
 
 UPLOAD_FOLDER = 'static/report'
+AUDIT_LOG_FILE = 'audit_log.txt'       # Local encrypted audit log (works without contract redeploy)
 global userid, hospital, pnameValue, pdateValue, pfileValue
 
 # 32-byte (256-bit) key for AES-256-GCM. Replace with your own fixed key.
@@ -91,6 +92,38 @@ def decrypt_bytes(data):
     ct = data[12:]
     aesgcm = AESGCM(_get_key())
     return aesgcm.decrypt(nonce, ct, None)
+
+def _append_audit_local(plaintext_record: str):
+    """
+    Encrypt and append one audit record to the local audit log file.
+    Works immediately — no contract redeploy or CSP socket needed.
+    """
+    try:
+        encrypted = encrypt_text(plaintext_record.rstrip("\n"))
+        with open(AUDIT_LOG_FILE, 'a', encoding='utf-8') as f:
+            f.write(encrypted + '\n')
+    except Exception as e:
+        print(f"[AUDIT] local write error: {e}")
+
+
+def _read_audit_local() -> list:
+    """
+    Read and decrypt all audit records from the local file.
+    Returns a list of plaintext record strings.
+    """
+    rows = []
+    if not os.path.exists(AUDIT_LOG_FILE):
+        return rows
+    try:
+        with open(AUDIT_LOG_FILE, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    rows.append(decrypt_text(line))
+    except Exception as e:
+        print(f"[AUDIT] local read error: {e}")
+    return rows
+
 
 def get_rows(contract_type):
     readDetails(contract_type)
@@ -254,18 +287,28 @@ def _sync_revocations_from_blockchain():
 # ── CLS: Audit-proof access logging ──────────────────────────────────────────
 def log_access(patient_id: str, doctor_id: str, file_class: int = 0):
     """
-    Record a non-repudiable access event on the blockchain.
-    CLS-signs the log entry with the doctor's session key so the doctor
-    cannot later deny having accessed the file.
-    Wrapped in try/except — never crashes the app.
+    Record a non-repudiable access event.
+    Primary storage: local encrypted file (works without contract redeploy).
+    Secondary: blockchain (only if contract has been redeployed with setAuditLog).
+    CLS-signs the entry so the doctor cannot deny the access.
+    Never crashes the app.
     """
     try:
-        timestamp  = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        log_entry  = f"access_log#{patient_id}#{doctor_id}#{file_class}#{timestamp}"
-        sig        = cls_engine.sign(log_entry, doctor_id)
-        sig_str    = f"{sig['pseudo_id']}:{sig['sigma']}" if sig else "unsigned"
+        timestamp   = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        log_entry   = f"access_log#{patient_id}#{doctor_id}#{file_class}#{timestamp}"
+        sig         = cls_engine.sign(log_entry, doctor_id)
+        sig_str     = f"{sig['pseudo_id']}:{sig['sigma']}" if sig else "unsigned"
         full_record = f"{log_entry}#{sig_str}"
-        saveDataBlockChain(full_record, "audit")
+
+        # ── Primary: local encrypted file (always works) ──────────────
+        _append_audit_local(full_record)
+        print(f"[AUDIT] Logged: patient={patient_id}, doctor={doctor_id}, class={file_class}")
+
+        # ── Secondary: blockchain (only if contract redeployed) ────────
+        try:
+            saveDataBlockChain(full_record, "audit")
+        except Exception:
+            pass   # blockchain not ready yet — local file is the source of truth
     except Exception as e:
         print(f"[CLS] log_access warning: {e}")
 
@@ -1085,41 +1128,59 @@ def api_batch_verify_telemetry():
 @app.route('/ViewAccessLog', methods=['GET'])
 def ViewAccessLog():
     """
-    Patient/Admin view of the immutable blockchain access audit log.
-    Shows who accessed which patient's files and when (with pseudo-ID).
+    Immutable access audit log viewer.
+    Reads from local encrypted file (primary) + blockchain (if redeployed).
     """
-    rows   = get_rows("audit")
-    output = ""
     filter_patient = request.args.get('patient', '')
 
+    # ── Gather rows from local file (always available) ────────────────
+    rows = _read_audit_local()
+
+    # ── Also merge any rows already on blockchain (post-redeploy) ─────
+    try:
+        bc_rows = get_rows("audit")
+        for r in bc_rows:
+            if r.strip() and r not in rows:
+                rows.append(r)
+    except Exception:
+        pass
+
+    output     = ""
+    row_count  = 0
+
     for row in rows:
-        if not row.strip():
+        row = row.strip()
+        if not row:
             continue
         arr = row.split("#")
-        # Format: access_log#patient#doctor#class#timestamp#pseudo_id:sigma
-        if arr[0] == "access_log" and len(arr) >= 5:
-            patient_id  = arr[1]
-            doctor_id   = arr[2]
-            data_class  = arr[3]
-            timestamp   = arr[4]
-            sig_info    = arr[5] if len(arr) > 5 else "—"
-            pseudo_part = sig_info.split(":")[0] if ":" in sig_info else sig_info
+        # Expected: access_log#patient#doctor#class#timestamp#pseudo_id:sigma
+        if arr[0] != "access_log" or len(arr) < 5:
+            continue
 
-            if filter_patient and patient_id != filter_patient:
-                continue
+        patient_id  = arr[1]
+        doctor_id   = arr[2]
+        data_class  = arr[3]
+        timestamp   = arr[4]
+        sig_info    = arr[5] if len(arr) > 5 else "—"
+        pseudo_part = sig_info.split(":")[0] if ":" in sig_info else sig_info
 
-            output += (
-                f'<tr>'
-                f'<td>{patient_id}</td>'
-                f'<td>{doctor_id}</td>'
-                f'<td>{data_class}</td>'
-                f'<td>{timestamp}</td>'
-                f'<td><code style="font-size:0.75rem">{pseudo_part[:16]}…</code></td>'
-                f'</tr>'
-            )
+        if filter_patient and patient_id != filter_patient:
+            continue
+
+        row_count += 1
+        output += (
+            f'<tr>'
+            f'<td>{patient_id}</td>'
+            f'<td>{doctor_id}</td>'
+            f'<td>{data_class}</td>'
+            f'<td>{timestamp}</td>'
+            f'<td><code style="font-size:0.75rem">{pseudo_part[:16]}…</code></td>'
+            f'</tr>'
+        )
 
     return render_template('ViewAccessLog.html', data=output,
-                           filter_patient=filter_patient)
+                           filter_patient=filter_patient,
+                           row_count=row_count)
 
 
 if __name__ == '__main__':

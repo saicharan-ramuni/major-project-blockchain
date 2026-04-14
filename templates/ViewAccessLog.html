@@ -87,20 +87,27 @@
         <!-- Info panel -->
         <div class="glass-panel p-4 mb-5 animate-up">
             <div class="row g-3">
-                <div class="col-md-4 text-center">
+                <div class="col-md-3 text-center">
                     <i class="fa fa-eye fa-2x mb-2" style="color: var(--primary);"></i>
                     <div class="text-secondary small">Every access recorded</div>
                     <div class="fw-semibold">Transparent</div>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-md-3 text-center">
                     <i class="fa fa-fingerprint fa-2x mb-2" style="color: #68d391;"></i>
                     <div class="text-secondary small">CLS-signed by accessor</div>
                     <div class="fw-semibold">Non-Repudiable</div>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-md-3 text-center">
                     <i class="fa fa-user-secret fa-2x mb-2" style="color: #f6ad55;"></i>
                     <div class="text-secondary small">Pseudo-ID shown publicly</div>
                     <div class="fw-semibold">Conditionally Anonymous</div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <i class="fa fa-database fa-2x mb-2" style="color: #fc8181;"></i>
+                    <div class="text-secondary small">Total log entries</div>
+                    <div class="fw-semibold" style="color: var(--primary); font-size:1.4rem;">
+                        {{ row_count if row_count is defined else 0 }}
+                    </div>
                 </div>
             </div>
         </div>
