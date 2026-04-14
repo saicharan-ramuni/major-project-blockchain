@@ -32,12 +32,22 @@
                 formObj.t2.focus();
                 return false;
             }
-            if(formObj.t3.value.length==0){
-                alert("Please upload report");
+            if(formObj.t3.files.length==0){
+                alert("Please upload at least one report file");
                 formObj.t3.focus();
                 return false;
             }
             return true;
+        }
+        function updateFileLabel(input) {
+            const label = document.getElementById('fileCountLabel');
+            const count = input.files.length;
+            if (count === 0) {
+                label.innerHTML = '<i class="fa fa-info-circle me-1"></i>Select one or more files (PDF/JPG/PNG) — Max 5 MB each';
+            } else {
+                const names = Array.from(input.files).map(f => f.name).join(', ');
+                label.innerHTML = '<i class="fa fa-check-circle me-1 text-success"></i>' + count + ' file(s) selected: ' + names;
+            }
         }
     </script>
 </head>
@@ -71,7 +81,7 @@
                     <i class="fa fa-file-medical-alt fa-2x"></i>
                 </div>
                 <h3 class="mt-3">Medical Data Sharing</h3>
-                <p class="text-secondary">Securely upload symptoms and reports to the blockchain</p>
+                <p class="text-secondary">Securely upload symptoms and multiple reports to the blockchain</p>
                 {% if data %}
                 <div class="alert alert-info bg-transparent border-info text-info py-2 mt-3" role="alert">
                     {{ data|safe }}
@@ -86,9 +96,12 @@
                         <input type="number" name="t1" id="t1" class="form-control form-control-custom" placeholder="e.g. 25">
                     </div>
                     <div class="col-md-8 mb-4">
-                        <label for="t3">Upload Medical Reports</label>
-                        <input type="file" name="t3" id="t3" class="form-control form-control-custom">
-                        <small class="text-secondary mt-1 d-block"><i class="fa fa-info-circle me-1"></i> Max file size: 5MB (PDF/JPG/PNG)</small>
+                        <label for="t3">Upload Medical Reports <span class="badge bg-primary ms-1">Multiple allowed</span></label>
+                        <input type="file" name="t3" id="t3" class="form-control form-control-custom" multiple
+                               onchange="updateFileLabel(this)">
+                        <small class="text-secondary mt-1 d-block" id="fileCountLabel">
+                            <i class="fa fa-info-circle me-1"></i>Select one or more files (PDF/JPG/PNG) — Max 5 MB each
+                        </small>
                     </div>
                 </div>
                 
@@ -106,7 +119,7 @@
                     <small class="text-secondary mt-2 d-block"><i class="fa fa-check-double me-1"></i> You can select multiple providers</small>
                 </div>
                 
-                <button type="submit" class="btn btn-primary-custom w-100 py-3">Seal & Share on Blockchain</button>
+                <button type="submit" class="btn btn-primary-custom w-100 py-3">Seal &amp; Share on Blockchain</button>
             </form>
             
             <div class="text-center mt-4">

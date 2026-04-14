@@ -1,0 +1,1130 @@
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 283, in ViewPatientReport
+    if temp[k] == hospital:
+NameError: name 'hospital' is not defined
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 283, in ViewPatientReport
+    if temp[k] == hospital:
+NameError: name 'hospital' is not defined
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\connection.py", line 175, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\util\connection.py", line 95, in create_connection
+    raise err
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\connectionpool.py", line 722, in urlopen
+    chunked=chunked,
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "C:\Users\sai charan ramuni\AppData\Local\Programs\Python\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\sai charan ramuni\AppData\Local\Programs\Python\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\sai charan ramuni\AppData\Local\Programs\Python\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\sai charan ramuni\AppData\Local\Programs\Python\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Users\sai charan ramuni\AppData\Local\Programs\Python\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\connection.py", line 187, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000261EAAC1860>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\requests\adapters.py", line 499, in send
+    timeout=timeout,
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\connectionpool.py", line 800, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8545): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000261EAAC1860>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 529, in PatientLoginAction
+    rows = get_rows("patient")
+  File "app.py", line 86, in get_rows
+    readDetails(contract_type)
+  File "app.py", line 126, in readDetails
+    web3.eth.defaultAccount = web3.eth.accounts[0]
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\eth.py", line 97, in accounts
+    return self.web3.manager.request_blocking("eth_accounts", [])
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\manager.py", line 109, in request_blocking
+    response = self._make_request(method, params)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\manager.py", line 92, in _make_request
+    return request_func(method, params)
+  File "cytoolz\\functoolz.pyx", line 263, in cytoolz.functoolz.curry.__call__
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\formatting.py", line 50, in apply_formatters
+    response = make_request(method, params)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\gas_price_strategy.py", line 18, in middleware
+    return make_request(method, params)
+  File "cytoolz\\functoolz.pyx", line 263, in cytoolz.functoolz.curry.__call__
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\formatting.py", line 50, in apply_formatters
+    response = make_request(method, params)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\attrdict.py", line 18, in middleware
+    response = make_request(method, params)
+  File "cytoolz\\functoolz.pyx", line 263, in cytoolz.functoolz.curry.__call__
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\formatting.py", line 50, in apply_formatters
+    response = make_request(method, params)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\normalize_errors.py", line 9, in middleware
+    result = make_request(method, params)
+  File "cytoolz\\functoolz.pyx", line 263, in cytoolz.functoolz.curry.__call__
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\formatting.py", line 50, in apply_formatters
+    response = make_request(method, params)
+  File "cytoolz\\functoolz.pyx", line 263, in cytoolz.functoolz.curry.__call__
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\formatting.py", line 50, in apply_formatters
+    response = make_request(method, params)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\middleware\exception_retry_request.py", line 80, in middleware
+    return make_request(method, params)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\providers\rpc.py", line 68, in make_request
+    **self.get_request_kwargs()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\web3\utils\request.py", line 26, in make_post_request
+    response = session.post(endpoint_uri, data=data, *args, **kwargs)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\requests\sessions.py", line 635, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\requests\sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\requests\sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\requests\adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8545): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000261EAAC1860>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---
+Traceback (most recent call last):
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1499, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\app.py", line 1481, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\flask\ctx.py", line 397, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\sai charan ramuni\AppData\Roaming\Python\Python37\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+---

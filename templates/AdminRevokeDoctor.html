@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Revoke Doctor | Healthcare IoT</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <h4 class="m-0"><i class="fa fa-shield-halved me-3"></i>Admin Portal</h4>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto ps-4">
+                    <a href="AddDoctor" class="nav-item nav-link">Add Doctor</a>
+                    <a href="ViewHospitalDetails" class="nav-item nav-link">View Hospitals</a>
+                    <a href="AdminRevokeDoctor" class="nav-item nav-link active">Global Revocation</a>
+                    <a href="index" class="btn btn-outline-danger ms-lg-3 mt-2 mt-lg-0 px-4" style="border-radius: 50px;">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <div class="container section-padding">
+        <div class="section-title animate-up">
+            <h2>Global Doctor <span style="color: var(--primary);">Revocation</span></h2>
+            <p class="text-secondary">Permanently revoke a doctor's access across ALL patients. This is the Admin-layer revocation in the KAC-UR dual-layer scheme.</p>
+            <div class="divider"></div>
+        </div>
+
+        <!-- Admin Power Warning -->
+        <div class="glass-panel p-4 mb-5 animate-up" style="border-color: rgba(255, 80, 80, 0.4);">
+            <div class="d-flex align-items-start gap-3">
+                <i class="fa fa-shield-halved fa-2x mt-1" style="color: #ff5050;"></i>
+                <div>
+                    <h6 class="text-white mb-2">Admin-Layer Global Revocation (KAC-UR Layer 2)</h6>
+                    <p class="text-secondary mb-0 small">
+                        This implements the <strong>Admin Revocation</strong> layer from Liu et al., IEEE TKDE 2024. 
+                        Once a doctor is globally revoked, the KAC-UR engine will <em>deny Update Key generation</em> 
+                        for that doctor across every patient in the system — regardless of whether individual patients have revoked them or not.
+                        This is appropriate for emergency situations such as license revocation or malicious behavior detection.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel animate-up delay-1">
+            <div class="p-4">
+                <h5 class="text-white mb-4"><i class="fa fa-user-slash me-2 text-danger"></i>Registered Doctors</h5>
+                {% if data %}
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Doctor / Username</th>
+                                <th>System Status</th>
+                                <th>Admin Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ data|safe }}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="fa fa-info-circle text-secondary fa-3x mb-3"></i>
+                    <p class="text-secondary">No doctors registered in the system yet.</p>
+                    <a href="AddDoctor" class="btn btn-primary-custom">Add a Doctor</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="row mt-4 animate-up delay-2">
+            <div class="col-12">
+                <div class="glass-panel p-4" style="border-color: rgba(255, 50, 50, 0.5); background: rgba(255,50,50,0.04);">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="fa fa-radiation fa-2x" style="color: #ff3232;"></i>
+                        <div>
+                            <h6 class="text-white mb-1">⚠ Danger Zone — Irreversible Action</h6>
+                            <p class="text-secondary mb-0 small">
+                                Global revocation is recorded permanently on the blockchain and invalidates the doctor's 
+                                <em>Update Keys</em> across all patients. The in-memory KAC engine state is also immediately updated. 
+                                This action cannot be undone without re-deploying the contract and re-running the migration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

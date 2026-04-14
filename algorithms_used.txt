@@ -1,0 +1,274 @@
+
+================================================================================
+SECTION 1: KEY-AGGREGATE CRYPTOSYSTEM WITH USER REVOCATION (KAC-UR)
+================================================================================
+
+  The KAC-UR scheme is a public-key cryptosystem built on modular arithmetic
+  that simulates bilinear pairing over a 1024-bit safe prime group.
+  It supports constant-size aggregate keys and dual-layer user revocation.
+
+  ── 1.1  Sys(1^λ, n) — System Setup ─────────────────────────────────────────
+  Function  : system_setup() / KACUREngine.__init__()
+  Purpose   : Generates system-wide public parameters.
+  Steps     :
+    a) Choose a 1024-bit safe prime P and generator G = 2.
+    b) Pick a random secret α ∈ Z_Q.
+    c) Compute g_i = G^(α^i) mod P  for i = 1 … 2n  (n = number of data classes).
+    d) Publish {G, P, g_1, g_2, …, g_{2n}} as public parameters.
+
+  ── 1.2  Setup(T₀) — Patient / Owner Setup ───────────────────────────────────
+  Function  : owner_setup()
+  Purpose   : Generates Master Secret Key (MSK) and Master Public Key (MPK)
+              for a patient, along with the initial time-period key.
+  Steps     :
+    a) Sample random secrets  w, y ∈ Z_Q  (master secrets).
+    b) Compute MPK = { g^w, g^y } mod P.
+    c) Sample random time-period secret  t ∈ Z_Q.
+    d) Set time-period public key  PK_t = G^t mod P.
+    e) Return MSK = {w, y},  MPK = {g^w, g^y},  SK_t = {t, PK_t, T₀}.
+
+  ── 1.3  Enc(MPK, PK_j, l, M) — Report Encryption ───────────────────────────
+  Function  : encrypt_report()
+  Purpose   : Encrypts a patient report under data class l at time period T_j.
+  Steps     :
+    a) Sample random scalars  r, s ∈ Z_Q.
+    b) Compute:
+         C0 = G^s       mod P
+         C1 = G^r       mod P
+         C2 = PK_t^r    mod P   (binds ciphertext to time period)
+         C3 = (g_l^r · g^(w·s))  mod P
+         mask = SHA-256( g^(y·s) )
+         C4 = M  XOR  mask       (XOR-pad encryption of plaintext)
+    c) Return CT = {C0, C1, C2, C3, C4, data_class, time_period}.
+
+  ── 1.4  Extract(MSK, u_i, S_i) — Aggregate Key Extraction ──────────────────
+  Function  : extract_aggregate_key()
+  Purpose   : Generates a single constant-size aggregate key for a doctor,
+              covering a set S_i of allowed data classes.
+  Steps     :
+    a) Build a secret-sharing polynomial q(x) of degree |S|-1 with q(0) = w.
+       Coefficients are chosen randomly in Z_Q.
+    b) For each data class l ∈ S:
+         h_uid  = SHA-256( doctor_id )  mod Z_Q
+         q_val  = q( h_uid )
+         idx    = n + 1 – l
+         KS    *= g_{idx}^{q_val}  mod P
+    c) Return aggregate key KS (single group element, constant size).
+
+  ── 1.5  KeyUp(MSK, SK_j, RL_j, u_i, S_i) — Update Key Generation ────────────
+  Function  : generate_update_key()
+  Purpose   : Generates a time-period update key for a non-revoked doctor.
+              Returns None if the doctor is on any revocation list.
+  Steps     :
+    a) Dual-layer revocation check (see Section 3).
+    b) Compute:
+         h_uid  = SHA-256( doctor_id )  mod Z_Q
+         inv_t  = t^{-1}  mod Q            (Fermat's Little Theorem)
+         combo  = (y + h_uid)  mod Q
+         KU     = G^{(combo · inv_t)}  mod P
+    c) Store KU in the update-key registry keyed by (patient, doctor, T).
+    d) Return UK = {KU, time_period}.
+
+  ── 1.6  Transform(KU, CT) — Server-Side Partial Decryption ──────────────────
+  Function  : server_transform()
+  Purpose   : Cloud server partially decrypts the ciphertext using the update
+              key, removing the time-period factor before sending to doctor.
+  Steps     :
+    a) Retrieve update key UK for (patient, doctor, time_period).
+    b) Simulate bilinear pairing:
+         pairing_val = HMAC-SHA256_key( G^{r · h_uid} , "transform" )
+         (represents e(C2, KU) / e(C1, g^y) from the paper)
+    c) Return partial ciphertext CT' = {C0, pairing_val, C3, C4, r, s}.
+
+  ── 1.7  Dec(KS_i, CT') — Doctor-Side Final Decryption ───────────────────────
+  Function  : user_decrypt()
+  Purpose   : Doctor uses aggregate key KS to recover the plaintext.
+  Steps     :
+    a) Reconstruct mask: mask = SHA-256( g^{y·s} )
+    b) Plaintext M = C4 XOR mask.
+    c) Return decrypted bytes M.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+SECTION 2: SYMMETRIC ENCRYPTION — AES-256-GCM
+================================================================================
+
+  Used for encrypting patient report files on disk and sensitive text fields
+  (user records) before writing them to the blockchain.
+
+  ── 2.1  File / Binary Encryption  (encrypt_bytes / decrypt_bytes) ───────────
+  Algorithm : AES-256-GCM (Authenticated Encryption with Associated Data)
+  Key size  : 256 bits (32 bytes), base64-encoded constant key
+  Nonce     : 96-bit (12 bytes) randomly generated per encryption (os.urandom)
+  Steps     :
+    Encrypt:
+      a) Generate nonce = os.urandom(12)
+      b) ct = AESGCM(key).encrypt(nonce, plaintext, None)
+      c) Store nonce || ct  (prepend nonce to ciphertext)
+    Decrypt:
+      a) nonce = data[:12],  ct = data[12:]
+      b) plaintext = AESGCM(key).decrypt(nonce, ct, None)
+  Note      : GCM mode provides both confidentiality and integrity (AEAD).
+
+  ── 2.2  Text / Field Encryption  (encrypt_text / decrypt_text) ──────────────
+  Algorithm : AES-256-GCM  (same key)
+  Encoding  : Base64-URL-safe encoding of nonce || ciphertext
+  Steps     :
+    Encrypt:
+      a) Encode plaintext to UTF-8 bytes.
+      b) Generate nonce = os.urandom(12).
+      c) ct = AESGCM(key).encrypt(nonce, data, None)
+      d) Return base64url_encode(nonce || ct)
+    Decrypt:
+      a) raw = base64url_decode(token)
+      b) nonce = raw[:12],  ct = raw[12:]
+      c) plaintext = AESGCM(key).decrypt(nonce, ct, None)
+  Usage     : Applied to every record written to the Ethereum smart contract
+              to prevent on-chain data leakage.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+SECTION 3: DUAL-LAYER REVOCATION MECHANISM
+================================================================================
+  ── 3.1  Patient-Level Revocation (Layer 1) ──────────────────────────────────
+  Function  : revoke_user() / PatientRevokeDoctorAction
+  Algorithm :
+    a) Add doctor_id to patient's revocation list (_patient_rl).
+    b) Invalidate all existing update keys for (patient, doctor) pair.
+    c) Advance the patient's time period (Update(T_j) algorithm):
+         new_t  = random ∈ Z_Q
+         PK_t   = G^{new_t}  mod P
+         T_{j+1} = T_j + 1
+    d) Persist record  "patient_revoke#patient#doctor#date"
+       (AES-GCM encrypted) to Ethereum smart contract via setRevocation().
+
+  ── 3.2  Admin Global Revocation (Layer 2) ───────────────────────────────────
+  Function  : admin_revoke_user() / AdminRevokeDoctorAction
+  Algorithm :
+    a) Add doctor_id to global revocation list (_global_rl).
+    b) Invalidate all existing update keys for that doctor across ALL patients.
+    c) Persist record  "admin_revoke#doctor#date"
+       (AES-GCM encrypted) to Ethereum smart contract.
+
+  ── 3.3  Revocation Check (is_revoked) ───────────────────────────────────────
+  Function  : is_revoked()
+  Algorithm :
+    a) Check Layer 2 first: if doctor ∈ _global_rl → DENY.
+    b) Check Layer 1: if doctor ∈ _patient_rl[patient] → DENY.
+    c) If neither → ALLOW.
+  Applied at: KeyUp generation, server Transform, download_report route,
+              ViewPatientReport route.
+
+  ── 3.4  Revocation Sync from Blockchain ─────────────────────────────────────
+  Function  : _sync_revocations_from_blockchain()
+  Algorithm :
+    On patient/doctor login:
+    a) Read revocation_details from smart contract (getRevocation).
+    b) AES-GCM decrypt each record.
+    c) Parse and re-populate in-memory _patient_rl and _global_rl sets
+       so engine state survives app restarts.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+SECTION 4: HASH FUNCTIONS & PSEUDO-RANDOM FUNCTIONS
+================================================================================
+  ── 4.1  SHA-256 — Hash-to-Field ─────────────────────────────────────────────
+  Function  : _h(data) / h(data)
+  Usage     : Maps arbitrary byte strings to field elements in Z_Q.
+  Formula   : h(x) = (int.from_bytes(SHA-256(x), 'big') mod (Q-1)) + 1
+  Applied to: doctor identity hashing, mask derivation for XOR-pad.
+
+  ── 4.2  HMAC-SHA256 — Pseudo-Random Function (Pairing Simulation) ───────────
+  Function  : _prf(key, data) / prf(key, data)
+  Usage     : Simulates the output of a bilinear pairing e(G,G)^x in pure Python.
+              In production, real pairings would use py_ecc or charm-crypto.
+  Formula   : prf(k, data) = int.from_bytes(HMAC-SHA256(SHA-256(k), data), 'big')
+                              mod (Q-1) + 1
+
+  ── 4.3  SHA-256 — Message Masking ───────────────────────────────────────────
+  Function  : _xor_pad() / encrypt_report()
+  Usage     : Derives a 256-bit XOR mask from g^{y·s} to encrypt plaintext M.
+  Formula   : mask = SHA-256( int_to_bytes(g^{y·s} mod P) )
+              C4   = M XOR mask
+
+  ── 4.4  SHA-1 — Legacy (Cloud Service Provider) ─────────────────────────────
+  Source file: CSP.py
+  Library    : hashlib.sha1
+  Usage      : Imported for potential hash use in the original cloud server
+               module (not actively invoked in the current integration).
+
+--------------------------------------------------------------------------------
+
+================================================================================
+SECTION 5: SHAMIR SECRET SHARING (POLYNOMIAL-BASED KEY AGGREGATION)
+================================================================================
+  ── 5.1  Secret Sharing Polynomial ───────────────────────────────────────────
+  Function  : extract_aggregate_key() (poly_eval sub-function)
+  Purpose   : Enables a single constant-size aggregate key to unlock multiple
+              data classes without revealing individual class keys.
+  Algorithm :
+    a) Construct polynomial q(x) of degree |S|−1 over Z_Q:
+         q(x) = w + a_1·x + a_2·x² + … + a_{|S|-1}·x^{|S|-1}
+       where w = MSK master secret and a_i are random coefficients.
+    b) Evaluate q at doctor's hash: q_val = q( SHA-256(doctor_id) mod Z_Q ).
+    c) Aggregate key KS accumulates g_{n+1-l}^{q_val} for each class l ∈ S.
+    d) The construction ensures KS can decrypt any class in S but
+       cannot be extended to classes outside S.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+SECTION 6: MODULAR ARITHMETIC (GROUP THEORY)
+================================================================================
+  ── 6.1  Modular Exponentiation ──────────────────────────────────────────────
+  Operation : pow(base, exp, mod)  — Python built-in (binary square-and-multiply)
+  Group     : Multiplicative group mod P  (1024-bit safe prime)
+  Used in   : All group operations: key generation, encryption, decryption.
+
+  ── 6.2  Modular Inverse (Fermat's Little Theorem) ────────────────────────────
+  Formula   : t^{-1} mod Q ≈ pow(t, P-3, Q)
+              (valid because Q = P-1 is even; approximation used in simulation)
+  Used in   : Update key computation: inv_t = t^{-1} for KU = G^{(y+h_uid)/t}
+
+  ── 6.3  Group Parameters ────────────────────────────────────────────────────
+  Prime P   : 1024-bit RFC 3526 MODP Group 2 safe prime
+              P = 2^1024 − 2^960 − 1 + 2^64 × ⌊2^894 π⌋
+  Generator : G = 2
+  Order Q   : Q = P − 1  (exponent moduli)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+SECTION 7: BLOCKCHAIN — ETHEREUM SMART CONTRACT
+================================================================================
+  ── 7.1  Smart Contract Storage ──────────────────────────────────────────────
+  Language  : Solidity (v0.4.0 – 0.9.0)
+  Network   : Local Ethereum node (Ganache) via HTTP at 127.0.0.1:8545
+  Contract  : Report.sol
+  Storage   : All PII and EHR records stored as encrypted strings on-chain.
+  Functions :
+    setHospital / getHospital     — Doctor/hospital registration records
+    setPatient  / getPatient      — Patient health records
+    setPrescription / getPrescription — Doctor prescription records
+    setRevocation / getRevocation — KAC-UR revocation records
+    advanceTimePeriod             — Monotonic time-period counter
+
+  ── 7.2  Blockchain Interaction Protocol ─────────────────────────────────────
+  Library   : web3.py  (Python Ethereum client)
+  Method    : Transactions via contract.functions.set*.transact()
+              Reads via contract.functions.get*.call()
+  Network   : Proof-of-Authority / Ganache PoA development chain
+
+  ── 7.3  Data Integrity via Blockchain Immutability ──────────────────────────
+  Property  : Once written, records are tamper-evident (Ethereum consensus).
+  Encryption: Every record is AES-256-GCM encrypted before on-chain storage
+              (see Section 2), ensuring data confidentiality on a public ledger.
+
+
+
+================================================================================
+END OF DOCUMENT
+================================================================================
