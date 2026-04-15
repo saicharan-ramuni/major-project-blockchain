@@ -1019,6 +1019,30 @@ def download_report():
 # CLS API ENDPOINTS  (Section 6.3 of implementation plan)
 # ─────────────────────────────────────────────────────────────────────────────
 
+@app.route('/api/cls_register/<username>', methods=['GET'])
+def api_cls_register(username):
+    """
+    Register a user with Flask's PKG and return their key material.
+
+    The server's CLSEngine acts as the PKG — it generates the partial key
+    (d, R) tied to ITS master secret (s, Ppub).  Signatures made with these
+    keys will verify correctly against Flask's Ppub.
+
+    GET /api/cls_register/<username>
+    Response: { pseudo_id, pk: {X_hex, R_hex}, h1_val, sk: {x, d} }
+
+    Note: In production only (pk, pseudo_id) would be public; sk is returned
+    here for demonstration so test clients can sign locally.
+    """
+    key_data = cls_engine.user_key_gen(username)
+    return jsonify({
+        "pseudo_id": key_data["pseudo_id"],
+        "pk":        key_data["pk"],
+        "h1_val":    key_data["h1_val"],
+        "sk":        {"x": key_data["sk"]["x"], "d": key_data["sk"]["d"]},
+    })
+
+
 @app.route('/api/challenge/<username>', methods=['GET'])
 def api_challenge(username):
     """
